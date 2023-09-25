@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 //import schema Appointment.js
 const appointmentSchema = require('./Appointment');
@@ -23,4 +23,6 @@ const petSchema = new Schema(
         appointment: [appointmentSchema],
     });
 
-module.exports = petSchema;
+const Pet = model('Pet', petSchema);
+
+module.exports = Pet;
