@@ -3,6 +3,7 @@ const { Schema, model } = require('mongoose');
 //import schema Appointment.js
 const appointmentSchema = require('./Appointment');
 
+//MIGHT NEED TO ADD petId FIELD
 const petSchema = new Schema(
     {
         name: {
