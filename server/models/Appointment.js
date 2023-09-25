@@ -1,5 +1,6 @@
 const { Schema } = require('mongoose');
 
+//MIGHT NEED TO ADD appointmentId FIELD
 const appointmentSchema = new Schema(
     {
         date: {
