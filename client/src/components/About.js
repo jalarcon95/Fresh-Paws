@@ -1,8 +1,9 @@
 
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
@@ -11,7 +12,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
-import { ThemeProvider } from '@mui/material/styles';
+
 
 const cards = [
     {
@@ -34,23 +35,8 @@ const cards = [
     }
 ]
 
-function Copyright() {
+export default function About () {
   return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="#">
-        Fresh Paws
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const About = () => {
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <CssBaseline />
       <main>
         <Box
           sx={{
@@ -101,14 +87,14 @@ const About = () => {
                       // 16:9
                       pt: '56.25%',
                     }}
-                    image= {cards.image}
+                    image= {card.image}
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      "{cards.review}"
+                      "{card.review}"
                     </Typography>
                     <Typography>
-                      -{cards.pet}.... {cards.package}
+                      -{card.pet}.... {card.package}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -117,21 +103,6 @@ const About = () => {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-        <Typography variant="h6" align="center" gutterBottom>
-          Fresh Paws
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Where every tail gets a royal treatment!
-        </Typography>
-        <Copyright />
-      </Box>
-    </ThemeProvider>
   );
 }
+
