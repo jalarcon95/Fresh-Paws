@@ -1,37 +1,45 @@
 
 import * as React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import Biscuit from '../assets/Biscuit.jpg'
+import Peach from '../assets/Peach.jpg'
+import Max from '../assets/Max.jpg'
+import Rico from '../assets/Rico.jpg'
 
 
 const cards = [
     {
         pet: 'Biscuit',
         review: 'Exceptional grooming experience at Fresh Paws! My corgi, Biscuit, came out looking and feeling amazing. The staffs expertise and care truly shine through',
-        package: 'Full Grooming Package',
-        image: ''
+        package: '',
+        image: Biscuit
     },
     {
-        pet: 'Chivy',
-        review: 'Fantastic grooming experience at Pampered Paws! Chivy came out looking fresh and constant communication from the staff made it a stress-free experience.',
+        pet: 'Max',
+        review: 'Fantastic grooming experience at Pampered Paws! Max came out looking fresh and constant communication from the staff made it a stress-free experience.',
         package: ' ',
-        image: ' ',
+        image: Max,
     },
     {
-        pet: ' place holder',
-        review: 'The groomer handled my hamster, , with such care and expertise. The attention to detail and gentle approach truly set this service apart. I highly recommend it for all small pet owners!',
+        pet: 'Peach',
+        review: 'The groomer handled my hamster, Peach, with such care and expertise. The attention to detail and gentle approach truly set this service apart. I highly recommend it for all small pet owners!',
         package: ' ',
-        image: ' ',
+        image: Peach,
+    },
+    {
+        pet: 'Rico',
+        review: 'New face who dis! The staff at Fresh Paws were gentle and attentive. My furry friend looks and feels fantastic. Highly recommended!',
+        package: ' ',
+        image: Rico,
     }
 ]
 
@@ -45,7 +53,7 @@ export default function About () {
             pb: 6,
           }}
         >
-          <Container maxWidth="sm">
+          <Container maxWidth="lg">
             <Typography
               component="h1"
               variant="h2"
@@ -74,7 +82,7 @@ export default function About () {
           </Container>
         </Box>
 
-        <Container sx={{ py: 8 }} maxWidth="md">
+        <Container lg={{ py: 2 }} maxWidth="md">
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
@@ -85,7 +93,7 @@ export default function About () {
                     component="div"
                     sx={{
                       // 16:9
-                      pt: '56.25%',
+                      pt: '150%',
                     }}
                     image= {card.image}
                   />
