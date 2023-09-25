@@ -16,19 +16,19 @@ import { ThemeProvider } from '@mui/material/styles';
 const cards = [
     {
         pet: 'Biscuit',
-        review: ' ',
-        package: ' ',
+        review: 'Exceptional grooming experience at Fresh Paws! My corgi, Biscuit, came out looking and feeling amazing. The staffs expertise and care truly shine through',
+        package: 'Full Grooming Package',
         image: ''
     },
     {
         pet: 'Chivy',
-        review: ' ',
+        review: 'Fantastic grooming experience at Pampered Paws! Chivy came out looking fresh and constant communication from the staff made it a stress-free experience.',
         package: ' ',
         image: ' ',
     },
     {
         pet: ' place holder',
-        review: ' ',
+        review: 'The groomer handled my hamster, , with such care and expertise. The attention to detail and gentle approach truly set this service apart. I highly recommend it for all small pet owners!',
         package: ' ',
         image: ' ',
     }
