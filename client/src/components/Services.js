@@ -12,8 +12,12 @@ import Auth from '../utils/auth.js';
 
 export default function Services() {
     return (
-        <Box sx={{ display: "flex", m: 5, flexWrap: "wrap" }}>
-            <Card sx={{ maxWidth: 345, width: "80%", m: 5 }}>
+        <Box sx={{ display: "flex", m: 5, flexWrap: "wrap", alignItems: "center" }}>
+            <Card sx={{
+                maxWidth: 345,
+                width: "80%",
+                m: 5
+            }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
@@ -31,7 +35,7 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary">
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
-                        {Auth.loggedIn()? (<Button>Reserve</Button>):(<div></div>)}
+                        {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)}
                         <Button>Reserve</Button>
                     </CardContent>
                 </CardActionArea>
