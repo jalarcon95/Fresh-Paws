@@ -38,7 +38,6 @@ input InputPet {
     species: String!
     vaccine: Boolean
     description: String
-    appointment: [Appointment]
 }
 
 input InputAppointment {
