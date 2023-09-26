@@ -8,7 +8,7 @@ type User {
     pets: [Pet]
 }
 
-tpye Pet {
+type Pet {
     petId: ID!
     name: String!
     species: String!
@@ -38,7 +38,6 @@ input InputPet {
     species: String!
     vaccine: Boolean
     description: String
-    appointment: [Appointment]
 }
 
 input InputAppointment {
