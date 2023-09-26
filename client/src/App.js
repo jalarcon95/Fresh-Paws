@@ -14,7 +14,7 @@ import About from './components/About';
 import Services from './components/Services';
 import NavBar from './components/NavBar';
 // import Profile from './pages/Profile';
-// import Header from './components/Header';
+import Header from './components/Header';
 // import Footer from './components/Footer';
 
 // Construct our main GraphQL API endpoint
@@ -46,7 +46,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> */}
+          <Header />
           <NavBar />
           <div className="container">
             <Routes>
