@@ -1,8 +1,9 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 //import schema Appointment.js
 const appointmentSchema = require('./Appointment');
 
+//MIGHT NEED TO ADD petId FIELD
 const petSchema = new Schema(
     {
         name: {
@@ -23,4 +24,6 @@ const petSchema = new Schema(
         appointment: [appointmentSchema],
     });
 
-module.exports = petSchema;
+const Pet = model('Pet', petSchema);
+
+module.exports = Pet;
