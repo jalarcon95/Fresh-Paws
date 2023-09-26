@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 // import './Contact.css';
 import {TextField} from '@mui/material';
 import {Button, MenuItem} from '@mui/material';
 import Stack from '@mui/material/Stack';
+//import emailjs 
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+    const form = useRef();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -61,14 +64,28 @@ export default function Contact() {
         }
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setName('');
+        setEmail('');
+        setMessage('');
+
+        emailjs.sendForm('service_segtnmw', 'template_7q5pd9o', form.current, 'U_zC3viltWoEFtq6o')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+    };
+
     return (
         <>
             <div>
                 <h1 style={{display:'flex', justifyContent: 'center'}}>
-                    Contact Me
+                    Contact Us
                 </h1>
             </div>
-            <form style={{display:'flex', justifyContent:'center'}}>
+            <form ref={form} style={{display:'flex', justifyContent:'center'}} onSubmit={handleSubmit}>
                 <Stack spacing={2}>
                     <MenuItem>
                         <TextField
@@ -81,6 +98,8 @@ export default function Contact() {
                             type='text'
                             variant='outlined'
                             style={{backgroundColor: 'lightgrey'}}
+                            value={name}
+                            onChange={e => setName(e.target.value)}
                         />
                     </MenuItem>
                     <MenuItem>
@@ -95,6 +114,9 @@ export default function Contact() {
                             type='email'
                             variant='outlined'
                             style={{backgroundColor: 'lightgrey'}}
+                            value={email}
+
+                            onChange={e => setEmail(e.target.value)}
                         />
                     </MenuItem>
                     <MenuItem>
@@ -109,6 +131,8 @@ export default function Contact() {
                             type='text'
                             variant='outlined'
                             style={{backgroundColor: 'lightgrey'}}
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
                             placeholder='Type your message here.'
                         />
                     </MenuItem>
@@ -123,6 +147,7 @@ export default function Contact() {
                             className='pop-on-hover'
                             xs={{ width: '100%'}}
                             variant='contained'
+                            type='submit'
                         >
                             Send Message
                         </Button>
