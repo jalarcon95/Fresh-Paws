@@ -33,12 +33,12 @@ export default function Services() {
                             Bath and Brush
                         </Typography>
                         <Box sx={{ display: "flex " }}>
-                            <PaidOutlinedIcon /> <Typography> 35</Typography>
+                            <PaidOutlinedIcon /> <Typography>35</Typography>
                         </Box>
                         <Typography variant="body2" color="text.secondary">
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
-                        {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)}
+                        {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)} */}
                         <Button>Reserve</Button>
                     </CardContent>
                 </CardActionArea>

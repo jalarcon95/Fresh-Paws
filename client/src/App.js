@@ -13,7 +13,6 @@ import About from './components/About';
 // import Login from './pages/Login';
 import Services from './components/Services';
 import NavBar from './components/NavBar';
-import Contact from './components/Contact'
 // import Profile from './pages/Profile';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
@@ -49,7 +48,7 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           {/* <Header /> */}
           <NavBar />
-          <Services/>
+          
           <div className="container">
             <Routes>
               {/* <Route 
