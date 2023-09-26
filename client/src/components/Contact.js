@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 // import './Contact.css';
 import {TextField} from '@mui/material';
 import {Button, MenuItem} from '@mui/material';
 import Stack from '@mui/material/Stack';
+//import emailjs 
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
+    const form = useRef();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
@@ -63,7 +66,16 @@ export default function Contact() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, email, message)
+        setName('');
+        setEmail('');
+        setMessage('');
+
+        emailjs.sendForm('service_segtnmw', 'template_7q5pd9o', form.current, 'U_zC3viltWoEFtq6o')
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
     };
 
     return (
@@ -73,7 +85,7 @@ export default function Contact() {
                     Contact Us
                 </h1>
             </div>
-            <form style={{display:'flex', justifyContent:'center'}} onSubmit={handleSubmit}>
+            <form ref={form} style={{display:'flex', justifyContent:'center'}} onSubmit={handleSubmit}>
                 <Stack spacing={2}>
                     <MenuItem>
                         <TextField
