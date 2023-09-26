@@ -61,14 +61,19 @@ export default function Contact() {
         }
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(name, email, message)
+    };
+
     return (
         <>
             <div>
                 <h1 style={{display:'flex', justifyContent: 'center'}}>
-                    Contact Me
+                    Contact Us
                 </h1>
             </div>
-            <form style={{display:'flex', justifyContent:'center'}}>
+            <form style={{display:'flex', justifyContent:'center'}} onSubmit={handleSubmit}>
                 <Stack spacing={2}>
                     <MenuItem>
                         <TextField
@@ -81,6 +86,8 @@ export default function Contact() {
                             type='text'
                             variant='outlined'
                             style={{backgroundColor: 'lightgrey'}}
+                            value={name}
+                            onChange={e => setName(e.target.value)}
                         />
                     </MenuItem>
                     <MenuItem>
@@ -95,6 +102,9 @@ export default function Contact() {
                             type='email'
                             variant='outlined'
                             style={{backgroundColor: 'lightgrey'}}
+                            value={email}
+
+                            onChange={e => setEmail(e.target.value)}
                         />
                     </MenuItem>
                     <MenuItem>
@@ -109,6 +119,8 @@ export default function Contact() {
                             type='text'
                             variant='outlined'
                             style={{backgroundColor: 'lightgrey'}}
+                            value={message}
+                            onChange={e => setMessage(e.target.value)}
                             placeholder='Type your message here.'
                         />
                     </MenuItem>
@@ -123,6 +135,7 @@ export default function Contact() {
                             className='pop-on-hover'
                             xs={{ width: '100%'}}
                             variant='contained'
+                            type='submit'
                         >
                             Send Message
                         </Button>
