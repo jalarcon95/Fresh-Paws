@@ -8,7 +8,7 @@ type User {
     pets: [Pet]
 }
 
-tpye Pet {
+type Pet {
     petId: ID!
     name: String!
     species: String!
