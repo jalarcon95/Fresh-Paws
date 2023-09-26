@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 //import schema from Pet.js
-const petSchema = require('./Pet');
+const Pet = require('./Pet');
 
 const userSchema = new Schema(
     {
@@ -22,7 +22,7 @@ const userSchema = new Schema(
             required: true,
         },
         // set pets to be an array of data that adheres to the petSchema
-        pets: [petSchema],
+        pets: [Pet.schema],
     },
     // set this to use virtual below
     {
