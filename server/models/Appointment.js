@@ -1,4 +1,5 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
+const Pet = require('./Pet');
 
 //MIGHT NEED TO ADD appointmentId FIELD
 const appointmentSchema = new Schema(
@@ -10,8 +11,11 @@ const appointmentSchema = new Schema(
         time: {
             type: String,
             required: true,
-        }
+        },
+        pet: Pet,
     }
 );
 
-module.exports = appointmentSchema;
+const Appointment = model('Appointment', appointmentSchema);
+
+module.exports = Appointment;
