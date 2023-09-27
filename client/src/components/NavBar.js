@@ -103,12 +103,6 @@ function ResponsiveAppBar() {
                         >
                             CONTACT
                         </Button>
-                        <Button
-                            onClick={logout}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                            LOGOUT
-                        </Button>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -134,20 +128,26 @@ function ResponsiveAppBar() {
                             onClose={handleCloseUserMenu}
                         >
 
-                            <MenuItem onClick={handleCloseUserMenu} sx={{ display: "column"}}>
+                            <MenuItem onClick={handleCloseUserMenu} sx={{ display: "flex", flexDirection: "column" }}>
                                 <Button
                                     href='/login'
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                 >
                                     LOGIN
                                 </Button>
                                 <Button
                                     href='/signup'
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                 >
                                     SIGNUP
+                                </Button>
+                                <Button
+                                    onClick={logout}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                >
+                                    LOGOUT
                                 </Button>
                             </MenuItem>
 
