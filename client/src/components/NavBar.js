@@ -14,6 +14,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import Auth from '../utils/auth';
+
 
 const pages = ['About', 'Services', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -36,6 +38,10 @@ function ResponsiveAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const logout = (event) => {
+        Auth.logout()
+    }
 
     return (
         <AppBar position="static" sx={{ background: "#3D5C60" }}>
