@@ -128,7 +128,7 @@ function ResponsiveAppBar() {
                             onClose={handleCloseUserMenu}
                         >
 
-                            <MenuItem onClick={handleCloseUserMenu}>
+                            <MenuItem onClick={handleCloseUserMenu} sx={{ display: "column"}}>
                                 <Button
                                     href='/login'
                                     onClick={handleCloseNavMenu}
