@@ -9,14 +9,11 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-
-const pages = ['About', 'Services', 'Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import Auth from '../utils/auth';
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,6 +33,10 @@ function ResponsiveAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const logout = (event) => {
+        Auth.logout()
+    }
 
     return (
         <AppBar position="static" sx={{ background: "#3D5C60" }}>
@@ -107,7 +108,6 @@ function ResponsiveAppBar() {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                                 <i className="fa-solid fa-dog pet"></i>
                             </IconButton>
                         </Tooltip>
@@ -128,20 +128,26 @@ function ResponsiveAppBar() {
                             onClose={handleCloseUserMenu}
                         >
 
-                            <MenuItem onClick={handleCloseUserMenu}>
+                            <MenuItem onClick={handleCloseUserMenu} sx={{ display: "flex", flexDirection: "column" }}>
                                 <Button
                                     href='/login'
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                 >
                                     LOGIN
                                 </Button>
                                 <Button
                                     href='/signup'
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'black', display: 'block' }}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                 >
                                     SIGNUP
+                                </Button>
+                                <Button
+                                    onClick={logout}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                >
+                                    LOGOUT
                                 </Button>
                             </MenuItem>
 
