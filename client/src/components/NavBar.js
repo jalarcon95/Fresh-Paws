@@ -9,16 +9,11 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
-
-
-const pages = ['About', 'Services', 'Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -108,12 +103,17 @@ function ResponsiveAppBar() {
                         >
                             CONTACT
                         </Button>
+                        <Button
+                            onClick={logout}
+                            sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                            LOGOUT
+                        </Button>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
                                 <i className="fa-solid fa-dog pet"></i>
                             </IconButton>
                         </Tooltip>
