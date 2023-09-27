@@ -52,7 +52,7 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+          <Avatar sx={{ m: 1, bgcolor: '#37745B' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -109,14 +109,14 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button
+            <button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign Up
-            </Button>
+            </button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="#" variant="body2">

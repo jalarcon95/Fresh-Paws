@@ -1,6 +1,6 @@
+import '../index.css';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Biscuit from '../assets/Biscuit.jpg';
 import Peach from '../assets/Peach.jpg';
-import Max from '../assets/Max.jpg';
+import Max from '../assets/Max2.jpg';
 import Rico from '../assets/Rico.jpg';
 import Chivy from '../assets/Chivy.jpg';
 import Leo from '../assets/Leo.jpg';
@@ -111,7 +111,7 @@ export default function About () {
               justifyContent="center"
             >
             <Link to="/services">
-              <Button style={{ backgroundColor: "#8B9D77" }} variant="contained">View Services</Button>
+              <button >View Services</button>
             </Link>
             </Stack>
           </Container>
