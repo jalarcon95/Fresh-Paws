@@ -10,7 +10,7 @@ function Header() {
       sx={{
         position: 'relative',
         mb: 4,
-        height: '350px',
+        height: '275px',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -19,7 +19,7 @@ function Header() {
       }}
     >
       {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={Logo} />}
+      {<img style={{ display: 'none' }} src={Logo} alt='Fresh Paws Logo'/>}
       <Box
         sx={{
           position: 'absolute',
