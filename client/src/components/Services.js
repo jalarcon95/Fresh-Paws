@@ -11,7 +11,7 @@ import Teeth from '../assets/teeth-clean.jpeg'
 import Nail from '../assets/nail-trim.avif'
 import Shed from '../assets/shedding.webp'
 import Fleas from '../assets/fleas.jpeg'
-import Auth from '../utils/auth.js';
+
 
 export default function Services() {
     return (
