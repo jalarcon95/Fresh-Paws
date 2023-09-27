@@ -9,13 +9,14 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import About from './components/About';
-// import Signup from './pages/Signup';
-// import Login from './pages/Login';
+import Signup from './components/Signup';
+import Login from './components/Login';
 import Services from './components/Services';
 import NavBar from './components/NavBar';
+import Contact from './components/Contact';
 // import Profile from './pages/Profile';
-// import Header from './components/Header';
-// import Footer from './components/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -46,13 +47,21 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          {/* <Header /> */}
           <NavBar />
+          <Header />
           <div className="container">
             <Routes>
-              {/* <Route 
+              <Route 
                 path="/"
-                element={<Home />}
+                element={<About />}
+              />
+              <Route 
+                path="/services"
+                element={<Services />}
+              />
+              <Route 
+                path="/contact"
+                element={<Contact />}
               />
               <Route 
                 path="/login" 
@@ -62,17 +71,13 @@ function App() {
                 path="/signup" 
                 element={<Signup />}
               />
-              <Route 
+              {/* <Route 
                 path="/me" 
                 element={<Profile />}
               />
               <Route 
                 path="/profiles/:username" 
                 element={<Profile />}
-              />
-              <Route 
-                path="/thoughts/:thoughtId" 
-                element={<SingleThought />}
               /> */}
             </Routes>
           </div>
