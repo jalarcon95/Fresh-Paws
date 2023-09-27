@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Barnie",
+        "species": "Cat",
+        "vaccine": "true",
+        "description": "A very large and in charge tabby cat."
+    },
+    {
+        "name": "Orangie",
+        "species": "Cat",
+        "vaccine": "false",
+        "description": "Looks just like an orangsickle."
+    },
+    {
+        "name": "Lightning",
+        "species": "Dog",
+        "vaccine": "true",
+        "description": "Well behaved and trained boston terrier."
+    }
+]
