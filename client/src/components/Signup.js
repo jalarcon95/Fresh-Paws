@@ -99,6 +99,7 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <button
+              className='hoverButton'
               type="submit"
             >
               Sign Up

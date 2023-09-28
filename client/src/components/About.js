@@ -111,8 +111,8 @@ export default function About () {
               spacing={2}
               justifyContent="center"
             >
-            <Link to="/services">
-              <button>View Services</button>
+            <Link to="/services" style={{ textDecoration: 'none' }}>
+              <button className='hoverButton'>View Services</button>
             </Link>
             </Stack>
           </Container>
