@@ -24,3 +24,73 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_PET = gql`
+  mutation addPet($newPet: InputPet!) {
+    addPet(newPet: $newPet) {
+      _id
+      username
+      email
+      pets {
+        petId
+        name
+        species
+        vaccine
+        description
+        appointments {
+          date
+          time
+        }
+      }
+    }
+  }
+`;
+
+export const REMOVE_PET = gql`
+  mutation removePet($petId: ID!) {
+    removePet(petId: $petId) {
+      _id
+      username
+      email
+      pets {
+        petId
+        name
+        species
+        vaccine
+        description
+        appointments {
+          date
+          time
+        }
+      }
+    }
+  }
+`;
+
+export const ADD_APPOINTMENT = gql`
+  mutation addAppointment($newAppointment: InputAppointment!) {
+    addAppointment(newAppointment: $newAppointment) {
+      petId
+      name
+      appointments {
+        appointmentId
+        date
+        time
+      }
+    }
+  }
+`;
+
+export const REMOVE_APPOINTMENT = gql`
+  mutation removeAppointment($appointmentId: ID!) {
+    removeAppointment(appointmentId: $appointmentId) {
+      petId
+      name
+      appointments {
+        appointmentId
+        date
+        time
+      }
+    }
+  }
+`;
