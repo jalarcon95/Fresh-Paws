@@ -142,7 +142,7 @@ export default function Contact() {
                         </div>
                     )}
                     <MenuItem style={{justifyContent: 'center'}}>
-                        <Button
+                        <button
                             id='contact-button'
                             className='pop-on-hover'
                             xs={{ width: '100%'}}
@@ -150,7 +150,7 @@ export default function Contact() {
                             type='submit'
                         >
                             Send Message
-                        </Button>
+                        </button>
                     </MenuItem>
                 </Stack>
             </form>

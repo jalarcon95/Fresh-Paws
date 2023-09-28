@@ -15,3 +15,24 @@ code {
 .pet {
   color: white;
 }
+
+button {
+  background-color: #8B9D77;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #37745B; /* Green */
+  color: white;
+}
