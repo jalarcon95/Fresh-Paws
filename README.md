@@ -9,15 +9,19 @@
 * [Installation](#install)
 * [Usage](#usage)
 * [Credits](#credits)
-* [Testing](#test)
-    
 * [License](#license)
 
 ## [Description](#table-of-contents)
-
+At Fresh Paws Pet Grooming, we believe that every furry friend deserves to look and feel their absolute best. Our mission is simple: to provide exceptional grooming services for all animals, great and small. With a team of passionate and skilled groomers, we cater to the unique needs of dogs, cats, hamsters, and even exotic pets, ensuring they leave our salon feeling refreshed, rejuvenated, and looking their finest. The application used a number of data persistence techniques that serve as redundancy in case one of the options in not supported by the browser. The app was built with GraphQL, a React front end, MongoDB database, and Node.js/Express.js server, API, queries and mutations to fetch and modify data. Application is deployed to heroku.
 
 ## [Installation](#table-of-contents)
-
+* React
+* GrapghQL
+* Apollo Server Express
+* MongoDB
+* Mongoose ODM
+* Queries and Mutations
+* Authentication
 
 
 ## [Usage](#table-of-contents)
@@ -31,9 +35,7 @@
 - Derek Marchese Github: https://github.com/dtm589 Email: n/a
 - Alexis Vasquez Github: https://github.com/Lexxvasquez Email: n/a
 
-## [Testing](#table-of-contents)
 
-n/a
 
     
 ## [License](#table-of-contents)
