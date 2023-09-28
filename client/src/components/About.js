@@ -2,7 +2,7 @@ import '../index.css';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
@@ -112,7 +112,7 @@ export default function About () {
               justifyContent="center"
             >
             <Link to="/services">
-              <Button className='button'>View Services</Button>
+              <button>View Services</button>
             </Link>
             </Stack>
           </Container>

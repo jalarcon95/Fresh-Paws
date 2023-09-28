@@ -98,12 +98,11 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
-            <Button
+            <button
               type="submit"
-              className='button'
             >
               Sign Up
-            </Button>
+            </button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/Login" variant="body2">
