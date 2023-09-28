@@ -25,21 +25,21 @@ db.once('open', async () => {
             species: "Cat",
             vaccine: "true",
             description: "A very large and in charge tabby cat.",
-            appointment: appointments[0]
+            appointments: appointments[0]
         },
         {
             name: "Orangie",
             species: "Cat",
             vaccine: "false",
             description: "Looks just like an orangsickle.",
-            appointment: appointments[2]
+            appointments: appointments[2]
         },
         {
             name: "Lightning",
             species: "Dog",
             vaccine: "true",
             description: "Well behaved and trained boston terrier.",
-            appointment: [appointments[1], appointments[3]]
+            appointments: [appointments[1], appointments[3]]
         }
     ]);
 

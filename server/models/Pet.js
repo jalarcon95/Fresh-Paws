@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 //import schema Appointment.js
-const Appointment = require('./Appointment');
+const appointmentSchema = require('./Appointment');
 
 //MIGHT NEED TO ADD petId FIELD
 const petSchema = new Schema(
@@ -21,9 +21,9 @@ const petSchema = new Schema(
             type: String,
         },
         // set appointment to be an array of data that adheres to the appointmentSchema
-        appointment: [Appointment.schema],
+        appointments: [appointmentSchema],
     });
 
-const Pet = model('Pet', petSchema);
+// const Pet = model('Pet', petSchema);
 
-module.exports = Pet;
+module.exports = petSchema;
