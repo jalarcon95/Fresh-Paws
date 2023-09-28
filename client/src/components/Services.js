@@ -38,11 +38,12 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary">
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
+                            <button className='hoverButton' >Reserve</button>
                         {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)} */}
-                        <Button>Reserve</Button>
                     </CardContent>
                 </CardActionArea>
             </Card>
+           
             <Card sx={{ maxWidth: 345, width: "80%", m: 5 }}>
                 <CardActionArea>
                     <CardMedia

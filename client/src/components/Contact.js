@@ -145,8 +145,8 @@ export default function Contact() {
                     )}
                     <MenuItem style={{justifyContent: 'center'}}>
                         <button
+                            className='hoverButton'
                             id='contact-button'
-                            className='pop-on-hover'
                             xs={{ width: '100%'}}
                             variant='contained'
                             type='submit'

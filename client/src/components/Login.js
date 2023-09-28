@@ -84,6 +84,7 @@ export default function SignIn() {
               label="Remember me"
             />
             <button
+              className='hoverButton'
               type="submit"
               fullWidth
               variant="contained"

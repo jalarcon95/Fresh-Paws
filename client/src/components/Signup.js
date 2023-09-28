@@ -99,10 +99,8 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <button
+              className='hoverButton'
               type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
             >
               Sign Up
             </button>
