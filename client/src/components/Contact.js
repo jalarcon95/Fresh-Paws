@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 // import './Contact.css';
 import {TextField} from '@mui/material';
-import {Button, MenuItem} from '@mui/material';
+import {MenuItem} from '@mui/material';
 import Stack from '@mui/material/Stack';
 //import emailjs 
 import emailjs from '@emailjs/browser';
@@ -12,6 +12,7 @@ export default function Contact() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [messageSent, setMessageSent] = useState(false);
 
     const validateName = (e) => {
         console.log(e);
@@ -69,6 +70,7 @@ export default function Contact() {
         setName('');
         setEmail('');
         setMessage('');
+        setMessageSent(true);
 
         emailjs.sendForm('service_segtnmw', 'template_7q5pd9o', form.current, 'U_zC3viltWoEFtq6o')
         .then((result) => {
@@ -143,8 +145,8 @@ export default function Contact() {
                     )}
                     <MenuItem style={{justifyContent: 'center'}}>
                         <button
+                            className='hoverButton'
                             id='contact-button'
-                            className='pop-on-hover'
                             xs={{ width: '100%'}}
                             variant='contained'
                             type='submit'
@@ -154,7 +156,11 @@ export default function Contact() {
                     </MenuItem>
                 </Stack>
             </form>
+            {messageSent && (
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <p className='success-text'>Message sent successfully!</p>
+                </div>
+            )}
         </>
     );
-
 }

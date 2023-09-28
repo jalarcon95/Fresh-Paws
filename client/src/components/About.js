@@ -2,6 +2,7 @@ import '../index.css';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
+// import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
@@ -110,8 +111,8 @@ export default function About () {
               spacing={2}
               justifyContent="center"
             >
-            <Link to="/services">
-              <button >View Services</button>
+            <Link to="/services" style={{ textDecoration: 'none' }}>
+              <button className='hoverButton'>View Services</button>
             </Link>
             </Stack>
           </Container>
