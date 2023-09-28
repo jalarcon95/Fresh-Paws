@@ -5,14 +5,12 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 function ResponsiveAppBar() {
@@ -164,6 +162,13 @@ function ResponsiveAppBar() {
                                 >
                                     SIGNUP
                                 </Button>
+                                {/* <Button
+                                    href='/profile'
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                >
+                                    PROFILE
+                                </Button> */}
                                 <Button
                                     onClick={logout}
                                     sx={{ my: 2, color: '#3D5C60', display: 'block' }}

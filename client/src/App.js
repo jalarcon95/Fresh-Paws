@@ -15,7 +15,7 @@ import Login from './components/Login';
 import Services from './components/Services';
 import NavBar from './components/NavBar';
 import Contact from './components/Contact';
-// import Profile from './pages/Profile';
+// import Profile from './components/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -73,11 +73,7 @@ function App() {
                 element={<Signup />}
               />
               {/* <Route 
-                path="/me" 
-                element={<Profile />}
-              />
-              <Route 
-                path="/profiles/:username" 
+                path="/profile" 
                 element={<Profile />}
               /> */}
             </Routes>
