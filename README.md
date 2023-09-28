@@ -51,6 +51,8 @@ The application is covered under the following license:
 [Deployed Site]()
 
 [Github Repo]()
+
+[Slide-Show Link](https://docs.google.com/presentation/d/1PehS2FEVgBHubWxq43y4Kxd75d-GOpv2f0NbE7NiYgM/edit#slide=id.p)
         
   
 
