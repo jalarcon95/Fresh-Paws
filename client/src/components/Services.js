@@ -39,7 +39,7 @@ export default function Services() {
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
                         {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)} */}
-                        <Button>Reserve</Button>
+                        <Button className='button'>Reserve</Button>
                     </CardContent>
                 </CardActionArea>
             </Card>
