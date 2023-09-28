@@ -73,10 +73,31 @@ function ResponsiveAppBar() {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-                            <MenuItem onClick={handleCloseNavMenu}>
-                                <Link to={`/`}><Typography textAlign="center">About</Typography></Link>
+                            <MenuItem onClick={handleCloseNavMenu} sx={{ display: "flex", flexDirection: "column" }} >
+                                {/* <Link to={`/`}><Typography textAlign="center">About</Typography></Link>
                                 <Link to={`/services`}><Typography textAlign="center">Services</Typography></Link>
-                                <Link to={`/contact`}><Typography textAlign="center">Contact</Typography></Link>
+                                <Link to={`/contact`}><Typography textAlign="center">Contact</Typography></Link> */}
+                                <Button
+                                    href='/'
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                >
+                                    ABOUT
+                                </Button>
+                                <Button
+                                    href='/services'
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                >
+                                    SERVICES
+                                </Button>
+                                <Button
+                                    href='/contact'
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                >
+                                    CONTACT
+                                </Button>
                             </MenuItem>
                         </Menu>
                     </Box>
