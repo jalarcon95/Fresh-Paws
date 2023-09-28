@@ -39,7 +39,7 @@ export default function Services() {
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
                         {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)} */}
-                        <Button>Reserve</Button>
+                        <Button sx={{ color: "black" }}>Reserve</Button>
                     </CardContent>
                 </CardActionArea>
             </Card>
@@ -119,7 +119,7 @@ export default function Services() {
                             Shedding
                         </Typography>
                         <Box sx={{ display: "flex " }}>
-                            <PaidOutlinedIcon /> <Typography> 15</Typography>
+                            <PaidOutlinedIcon /> <Typography> 25</Typography>
                         </Box>
                         <Typography variant="body2" color="text.secondary">
                             Get some help removing your pet's extra fur!
