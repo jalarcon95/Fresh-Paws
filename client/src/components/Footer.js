@@ -40,7 +40,7 @@ export default function StickyFooter() {
             py: 3,
             px: 2,
             mt: 'auto',
-            backgroundColor: '#8B9D77'
+            backgroundColor: '#3D5C60'
 
           }}
         >
