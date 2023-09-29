@@ -4,12 +4,24 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box, CardActionArea } from '@mui/material';
-import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 import petProfile from '../assets/PetProfile.png';
 import appointment from '../assets/apt.png';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
 
 
 export default function Profile() {
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+            petName: data.get('petName'),
+            species: data.get('species'),
+            allergies: data.get('allergies'),
+        });
+      };
+  
     return (
         <Box sx={{ display: "flex", m: 5, flexWrap: "wrap", justifyContent: "center" }}>
             <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
@@ -108,6 +120,49 @@ export default function Profile() {
                     </CardContent>
                 </CardActionArea>
             </Card>
+
+            <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
+                <Typography gutterBottom variant="h4"  color="#37745B" >
+                    Add a Pet:
+                </Typography>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Grid container spacing={2}>
+                <Grid item xs={12}>
+                    <TextField
+                    required
+                    fullWidth
+                    id="petName"
+                    label="Pet Name"
+                    name="petName"
+                    autoComplete="petName"
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                    required
+                    fullWidth
+                    id="species"
+                    label="Species"
+                    name="species"
+                    autoComplete="species"
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                    required
+                    fullWidth
+                    name="allergies"
+                    label="Allergies"
+                    id="allergies"
+                    autoComplete="allergies"
+                    />
+                </Grid>
+                </Grid>
+                <Typography>
+                    <button className='hoverButton' type="submit">Add Pet</button>
+                </Typography>
+                </Box>
+            </div>
         </Box>
     );
 }
