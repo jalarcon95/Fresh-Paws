@@ -51,7 +51,7 @@ export default function Contact() {
       setMessageSent(true);
 
       emailjs
-        .sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_USER_ID')
+        .sendForm('service_segtnmw', 'template_7q5pd9o', form.current, 'U_zC3viltWoEFtq6o')
         .then(
           (result) => {
             console.log(result.text);
