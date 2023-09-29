@@ -15,7 +15,7 @@ import Login from './components/Login';
 import Services from './components/Services';
 import NavBar from './components/NavBar';
 import Contact from './components/Contact';
-// import Profile from './components/Profile';
+import Profile from './components/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -72,10 +72,10 @@ function App() {
                 path="/signup" 
                 element={<Signup />}
               />
-              {/* <Route 
+              <Route 
                 path="/profile" 
                 element={<Profile />}
-              /> */}
+              />
             </Routes>
           </div>
           <Footer />
