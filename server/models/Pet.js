@@ -8,11 +8,9 @@ const petSchema = new Schema(
     {
         name: {
             type: String,
-            required: true,
         },
         species: {
             type: String,
-            required: true,
         },
         vaccine: {
             type: Boolean,
