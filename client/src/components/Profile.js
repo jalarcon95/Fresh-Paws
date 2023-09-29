@@ -52,16 +52,21 @@ export default function Profile() {
                             <Typography gutterBottom variant="h5" component="div">
                                 Pet Appointment
                                 <Typography>
-                                    {user.pets?.appointments && (
+                                    {user.pets && (
                                         user.pets.map(pet => (
                                             <>
                                                 <h2>Pet Name: {pet.name}</h2>
                                                 <ul>
                                                     {pet.appointments.map(appt => (
-                                                        <li>
-                                                            <p>Date: {appt.date}</p>
-                                                            <p>Time: {appt.time}</p>
-                                                        </li>
+                                                        <>
+                                                            <li>
+                                                                <p>Date: {appt.date}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>Time: {appt.time}</p>
+                                                            </li>
+                                                            <br />
+                                                        </>
                                                     ))}
                                                 </ul>
                                             </>
