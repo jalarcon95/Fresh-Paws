@@ -60,11 +60,13 @@ const resolvers = {
         },
         addAppointment: async (parents, { newAppointment }, context) => {
             if (context.user) {
-                const updatedPet = await Pet.findByIdAndUpdate(
-                    { _id: context.pet._id },
-                    { $push: { appointment: { newAppointment } } },
-                    { new: true }
-                );
+                const updatedPet = await User.findOneAndUpdate({_id: context.user._id, "pets._id": newAppointment.petId}, {
+                    $push: {"pets.$[].appointments": {date: newAppointment.date, time: newAppointment.time}}
+                }, {
+                    upsert: true,
+                    new: true,
+                    runValidators: true
+                })
                 return updatedPet;
             }
             throw new AuthenticationError('You need to be logged in!');

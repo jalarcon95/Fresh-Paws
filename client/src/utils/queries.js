@@ -6,11 +6,13 @@ query me {
       username
       email
       pets{
+        _id
         name
         species
         vaccine
         description
-        appointment{
+        appointments{
+          _id
           date
           time
         }

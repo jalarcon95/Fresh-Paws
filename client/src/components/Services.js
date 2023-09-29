@@ -12,6 +12,7 @@ import Nail from '../assets/nail-trim.avif'
 import Shed from '../assets/shedding.webp'
 import Fleas from '../assets/fleas.jpeg'
 import Auth from '../utils/auth';
+import { Link } from 'react-router-dom';
 
 
 export default function Services() {
@@ -39,7 +40,8 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
-                            <button className='hoverButton' >Reserve</button>
+                            <Link to={`/profile`}><button className='hoverButton' >Reserve</button></Link>
+                            
                         {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : ("")} */}
                     </CardContent>
                 </CardActionArea>

@@ -9,16 +9,16 @@ type User {
 }
 
 type Pet {
-    petId: ID!
-    name: String!
-    species: String!
+    _id: ID!
+    name: String
+    species: String
     vaccine: Boolean
     description: String
     appointments: [Appointment]
 }
 
 type Appointment {
-    appointmentId: ID!
+    _id: ID!
     date: String!
     time: String!
 }
@@ -33,7 +33,6 @@ type Query {
 }
 
 input InputPet {
-    petId: String
     name: String!
     species: String!
     vaccine: Boolean
@@ -41,7 +40,7 @@ input InputPet {
 }
 
 input InputAppointment {
-    appointmentId: String
+    petId: ID!
     date: String!
     time: String!
 }
