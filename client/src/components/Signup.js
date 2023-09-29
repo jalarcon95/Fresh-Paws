@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +13,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 function Copyright(props) {
   return (
@@ -31,12 +36,39 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+
+  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    console.log(userFormData);
+    // // check if form has everything (as per react-bootstrap docs)
+    // const form = event.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   event.preventDefault();
+    //   event.stopPropagation();
+    // }
+
+    try {
+      const { data } = await addUser({
+        variables: { ...userFormData },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    };
+
+    setUserFormData({
+      username: '',
+      email: '',
+      password: '',
     });
   };
 
@@ -68,6 +100,8 @@ export default function SignUp() {
                   label="Username"
                   name="username"
                   autoComplete="username"
+                  value={userFormData.username}
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -78,6 +112,8 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={userFormData.email}
+                  onChange={handleInputChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -89,14 +125,11 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  value={userFormData.password}
+                  onChange={handleInputChange}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
+
             </Grid>
             <button
               className='hoverButton'

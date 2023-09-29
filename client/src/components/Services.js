@@ -35,7 +35,7 @@ export default function Services() {
                         <Box sx={{ display: "flex " }}>
                             <PaidOutlinedIcon /> <Typography>35</Typography>
                         </Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
                             <button className='hoverButton' >Reserve</button>
@@ -59,7 +59,7 @@ export default function Services() {
                         <Box sx={{ display: "flex " }}>
                             <PaidOutlinedIcon /> <Typography> 45</Typography>
                         </Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Bath, haircut, brushing, light dematting, nail trim, paw & pad trim, ear cleaning, sanitary trim & more.
                         </Typography>
                     </CardContent>
@@ -80,7 +80,7 @@ export default function Services() {
                         <Box sx={{ display: "flex " }}>
                             <PaidOutlinedIcon /> <Typography> 10</Typography>
                         </Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Improve your furry friend's breath and dental health!
                         </Typography>
                     </CardContent>
@@ -101,7 +101,7 @@ export default function Services() {
                         <Box sx={{ display: "flex " }}>
                             <PaidOutlinedIcon /> <Typography> 20</Typography>
                         </Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             A clean trim and paw balm.
                         </Typography>
                     </CardContent>
@@ -120,9 +120,9 @@ export default function Services() {
                             Shedding
                         </Typography>
                         <Box sx={{ display: "flex " }}>
-                            <PaidOutlinedIcon /> <Typography> 15</Typography>
+                            <PaidOutlinedIcon /> <Typography> 25</Typography>
                         </Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Get some help removing your pet's extra fur!
                         </Typography>
                     </CardContent>
@@ -143,7 +143,7 @@ export default function Services() {
                         <Box sx={{ display: "flex " }}>
                             <PaidOutlinedIcon /> <Typography> 60</Typography>
                         </Box>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Get rid of your pet's pests, so they can get back to the important stuff. 
                         </Typography>
                     </CardContent>
