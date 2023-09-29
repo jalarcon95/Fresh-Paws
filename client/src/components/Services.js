@@ -11,6 +11,7 @@ import Teeth from '../assets/teeth-clean.jpeg'
 import Nail from '../assets/nail-trim.avif'
 import Shed from '../assets/shedding.webp'
 import Fleas from '../assets/fleas.jpeg'
+import Auth from '../utils/auth';
 
 
 export default function Services() {
@@ -39,7 +40,7 @@ export default function Services() {
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
                             <button className='hoverButton' >Reserve</button>
-                        {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)} */}
+                        {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : ("")} */}
                     </CardContent>
                 </CardActionArea>
             </Card>

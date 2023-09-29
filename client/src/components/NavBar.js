@@ -162,19 +162,26 @@ function ResponsiveAppBar() {
                                 >
                                     SIGNUP
                                 </Button>
-                                <Button
-                                    href='/profile'
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
-                                >
-                                    PROFILE
-                                </Button>
-                                <Button
-                                    onClick={logout}
-                                    sx={{ my: 2, color: '#3D5C60', display: 'block' }}
-                                >
-                                    LOGOUT
-                                </Button>
+
+                                {/* If logged in, profile and logout render */}
+                                {Auth.loggedIn() ? (
+                                    <Button
+                                        href='/profile'
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                    >
+                                        PROFILE
+                                    </Button>
+                                ) : ("")}
+                                {Auth.loggedIn() ? (
+                                    <Button
+                                        onClick={logout}
+                                        sx={{ my: 2, color: '#3D5C60', display: 'block' }}
+                                    >
+                                        LOGOUT
+                                    </Button>
+                                ) : ("")}
+
                             </MenuItem>
 
                         </Menu>
