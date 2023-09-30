@@ -8,21 +8,86 @@ import petProfile from '../assets/PetProfile.png';
 import appointment from '../assets/apt.png';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
+
+import { useState } from 'react';
+import Auth from '../utils/auth';
 import { GET_ME } from '../utils/queries';
-import { useQuery } from '@apollo/client';
+import { ADD_PET, REMOVE_PET, REMOVE_APPOINTMENT } from '../utils/mutations';
+import { useQuery, useMutation } from '@apollo/client';
 
 export default function Profile() {
-    const { data, loading, error } = useQuery(GET_ME);
+
+    const [userFormData, setUserFormData] = useState({ name: '', species: '', vaccine: '', description: '' });
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setUserFormData({ ...userFormData, [name]: value });
+    };
+
+    const { loading, data } = useQuery(GET_ME);
+    const [addPet, { er }] = useMutation(ADD_PET);
+    const [removePet, { e }] = useMutation(REMOVE_PET);
+    const [removeAppointment, { err }] = useMutation(REMOVE_APPOINTMENT);
+
     const user = data?.me || {};
 
-    console.log(user);
-    const handleSubmit = (event) => {
+    //function to delete an appointment
+    const handleAppointmentDelete = async (_id) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const response = await removeAppointment({ variables: _id });
+            console.log('Deleted Appointment', response);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    //function to delete a pet
+    const handlePetDelete = async (_id) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const response = await removePet({ variables: _id });
+            console.log('Deleted Pet: ', response);
+            if (e) {
+                console.log(e);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    //function on form to add a pet GETTING A 400 ERROR HERE
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            petName: data.get('petName'),
-            species: data.get('species'),
-            allergies: data.get('allergies'),
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const response = await addPet({
+                variables: { ...userFormData },
+            });
+            console.log('Added pet', response);
+        } catch (er) {
+            console.log(er)
+        };
+
+        setUserFormData({
+            name: '',
+            species: '',
+            vaccine: '',
         });
     };
 
@@ -36,6 +101,8 @@ export default function Profile() {
                 <Typography gutterBottom variant="h4" color="#37745B" >
                     Your Upcoming Appointment:
                 </Typography>
+
+                {/* INSTEAD OF MAPPING INSIDE THE CARD, MAP OVER EACH APPOINTMENT AND MAKE A CARD FOR IT */}
                 <Card sx={{
                     maxWidth: 345,
                     width: "80%",
@@ -88,7 +155,7 @@ export default function Profile() {
                                         //     ))
                                     )}
                                 </Typography>
-                                <button className='hoverButton' >Cancel</button>
+                                <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
                             </Typography>
                             <button className='hoverButton' >Update</button>
                         </CardContent>
@@ -102,6 +169,7 @@ export default function Profile() {
                 </Typography>
             </div>
 
+        {/* NEED TO MAP OVER EACH PET IN THE USER */}
             <Card sx={{
                 maxWidth: 345,
                 width: "80%",
@@ -121,50 +189,13 @@ export default function Profile() {
                         <Typography variant="body2" color="text.secondary">
                             Allergies
                         </Typography>
-                        <button className='hoverButton' >Remove</button>
+                        <button className='hoverButton' onClick={handlePetDelete} >Remove</button>
                         {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)} */}
                     </CardContent>
                 </CardActionArea>
             </Card>
 
-            <Card sx={{ maxWidth: 345, width: "80%", m: 5 }}>
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        height="250"
-                        image={petProfile}
-                        alt="Profile image"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Pet Name
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Allergies
-                        </Typography>
-                        <button className='hoverButton' >Remove</button>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-            <Card sx={{ maxWidth: 345, width: "80%", m: 5 }}>
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        height="250"
-                        image={petProfile}
-                        alt="Profile image"
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Pet Name
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Allergies
-                        </Typography>
-                        <button className='hoverButton' >Remove</button>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
+
 
             <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
                 <Typography gutterBottom variant="h4" color="#37745B" >
@@ -176,10 +207,12 @@ export default function Profile() {
                             <TextField
                                 required
                                 fullWidth
-                                id="petName"
+                                id="name"
                                 label="Pet Name"
-                                name="petName"
-                                autoComplete="petName"
+                                name="name"
+                                autoComplete="name"
+                                onChange={handleInputChange}
+                                value={userFormData.name}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -190,16 +223,20 @@ export default function Profile() {
                                 label="Species"
                                 name="species"
                                 autoComplete="species"
+                                onChange={handleInputChange}
+                                value={userFormData.species}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 required
                                 fullWidth
-                                name="allergies"
-                                label="Allergies"
-                                id="allergies"
-                                autoComplete="allergies"
+                                name="vaccine"
+                                label="Vaccinated"
+                                id="vaccine"
+                                autoComplete="vaccine"
+                                onChange={handleInputChange}
+                                value={userFormData.vaccine}
                             />
                         </Grid>
                     </Grid>
