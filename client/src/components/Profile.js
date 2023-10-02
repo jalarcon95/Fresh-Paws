@@ -3,17 +3,21 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, CardActionArea } from '@mui/material';
+import { Box, CardActionArea, FormLabel, RadioGroup } from '@mui/material';
 import petProfile from '../assets/PetProfile.png';
 import appointment from '../assets/apt.png';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import dayjs from 'dayjs';
+import Radio from '@mui/material/Radio';
+import FormControlLabel from '@mui/material/FormControlLabel';
+
 import { useState } from 'react';
 import Auth from '../utils/auth';
 import { GET_ME } from '../utils/queries';
 import { ADD_PET, REMOVE_PET, REMOVE_APPOINTMENT } from '../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
+
 
 export default function Profile() {
 
@@ -47,7 +51,7 @@ export default function Profile() {
         }
     };
 
-    //function to delete a pet
+    //function to delete a pet GETTING A 400 ERROR HERE
     const handlePetDelete = async (_id) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -88,6 +92,7 @@ export default function Profile() {
             name: '',
             species: '',
             vaccine: '',
+            description: '',
         });
     };
 
@@ -102,53 +107,54 @@ export default function Profile() {
                     Your Upcoming Appointment:
                 </Typography>
 
-                {/* INSTEAD OF MAPPING INSIDE THE CARD, MAP OVER EACH APPOINTMENT AND MAKE A CARD FOR IT */}
-                <Card sx={{
-                    maxWidth: 345,
-                    width: "80%",
-                    m: 5
-                }}>
-                    <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            height="300"
-                            image={appointment}
-                            alt="Appointment image"
-                        />
-                        <CardContent sx={{}}>
-                            <Typography gutterBottom variant="h5" component="div">
-                                Pet Appointment
-                                <Typography>
-                                    {user.pets && (
-                                        user.pets.map(pet => (
+                {/* Maps over each pet and each of its appointments to create a card for each appointment */}
+                {user.pets.appointments && (
+                    user.pets.appointments.map(appointments => (
+                        <Card sx={{
+                            maxWidth: 345,
+                            width: "80%",
+                            m: 5
+                        }}>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="300"
+                                    image={appointment}
+                                    alt="Appointment image"
+                                />
+                                <CardContent sx={{}}>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        Pet Appointment
+                                        <Typography>
                                             <>
-                                                <h2>Pet Name: {pet.name}</h2>
+                                                <h2>Pet Name: {user.pet.name}</h2>
                                                 <ul>
-                                                    {pet.appointments.map(appt => (
-                                                        <>
-                                                            <li>
-                                                                <p>Date: {dayjs(appt.date).format("MM/DD/YY")}</p>
-                                                            </li>
-                                                            <li>
-                                                                <p>Time: {appt.time}</p>
-                                                            </li>
-                                                            <li>
-                                                                <p>Service: {appt.service}</p>
-                                                            </li>
-                                                            <br />
-                                                        </>
-                                                    ))}
+                                                    <>
+                                                        <li>
+                                                            <p>Date: {dayjs(appointments.date).format("MM/DD/YY")}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Time: {appointments.time}</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Service: {appointments.service}</p>
+                                                        </li>
+                                                        <br />
+                                                    </>
+
                                                 </ul>
                                             </>
-                                        ))
-                                    )}
-                                </Typography>
-                                {/* <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button> */}
-                            </Typography>
-                            {/* <button className='hoverButton' >Update</button> */}
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
+
+
+                                        </Typography>
+                                        <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
+                                    </Typography>
+                                    <button className='hoverButton' >Update</button>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    ))
+                )}
             </div>
 
             <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
@@ -157,33 +163,34 @@ export default function Profile() {
                 </Typography>
             </div>
 
-        {/* NEED TO MAP OVER EACH PET IN THE USER */}
-            <Card sx={{
-                maxWidth: 345,
-                width: "80%",
-                m: 5
-            }}>
-                <CardActionArea>
-                    <CardMedia
-                        component="img"
-                        height="250"
-                        image={petProfile}
-                        alt="Profile image"
-                    />
-                    <CardContent sx={{}}>
-                        <Typography gutterBottom variant="h5" component="div">
-                            Pet name
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Allergies
-                        </Typography>
-                        <button className='hoverButton' onClick={handlePetDelete} >Remove</button>
-                        {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : (<div></div>)} */}
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-
-
+            {/* This displays each pet at the bottom in a card with a remove button, maybe an edit button? */}
+            {user.pets && (
+                user.pets.map(pet => (
+                    <Card sx={{
+                        maxWidth: 345,
+                        width: "80%",
+                        m: 5
+                    }}>
+                        <CardActionArea>
+                            <CardMedia
+                                component="img"
+                                height="250"
+                                image={petProfile}
+                                alt="Profile image"
+                            />
+                            <CardContent sx={{}}>
+                                <Typography gutterBottom variant="h5" component="div">
+                                    {pet.name}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                    {pet.description}
+                                </Typography>
+                                <button className='hoverButton' onClick={handlePetDelete} >Remove</button>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
+                ))
+            )}
 
             <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
                 <Typography gutterBottom variant="h4" color="#37745B" >
@@ -216,15 +223,27 @@ export default function Profile() {
                             />
                         </Grid>
                         <Grid item xs={12}>
+
+                            <FormLabel>Is Your Pet Vaccinated</FormLabel>
+                            <RadioGroup
+                                row
+                                name='vaccine'
+                                onChange={handleInputChange}
+                                value={userFormData.vaccine}>
+                                <FormControlLabel value='false' control={<Radio />} label='No' />
+                                <FormControlLabel value='true' control={<Radio />} label='Yes' />
+                            </RadioGroup>
+                        </Grid>
+                        <Grid item xs={12}>
                             <TextField
                                 required
                                 fullWidth
-                                name="vaccine"
-                                label="Vaccinated"
-                                id="vaccine"
-                                autoComplete="vaccine"
+                                id="description"
+                                label="Description"
+                                name="description"
+                                autoComplete="description"
                                 onChange={handleInputChange}
-                                value={userFormData.vaccine}
+                                value={userFormData.description}
                             />
                         </Grid>
                     </Grid>

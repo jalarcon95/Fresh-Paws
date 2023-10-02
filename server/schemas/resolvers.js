@@ -47,11 +47,11 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        removePet: async (parents, { petId }, context) => {
+        removePet: async (parents, { _id }, context) => {
             if (context.user) {
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { pets: { petId } } },
+                    { $pull: { pets: { _id } } },
                     { new: true }
                 );
                 return updatedUser;
