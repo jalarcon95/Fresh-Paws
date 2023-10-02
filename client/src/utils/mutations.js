@@ -32,23 +32,19 @@ export const ADD_PET = gql`
       username
       email
       pets {
-        petId
+        _id
         name
         species
         vaccine
         description
-        appointments {
-          date
-          time
-        }
       }
     }
   }
 `;
 
 export const REMOVE_PET = gql`
-  mutation removePet($petId: ID!) {
-    removePet(petId: $petId) {
+  mutation removePet($petId: _id) {
+    removePet(_id: $petId) {
       _id
       username
       email

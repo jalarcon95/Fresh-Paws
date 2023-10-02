@@ -1,12 +1,12 @@
 const db = require('../config/connection');
-const { User, Pet, Appointment } = require('../models');
+const { User, petSchema, appointmentSchema } = require('../models');
 
 db.once('open', async () => {
     // clean database
-    await Appointment.deleteMany();
+    await appointmentSchema.deleteMany({});
 
     // bulk create each model
-    const appointments = await Appointment.insertMany([
+    const appointments = await appointmentSchema.insertMany([
         { date: 'October 12th', time: '11:00 AM' },
         { date: 'October 17th', time: '9:00 AM' },
         { date: 'October 28th', time: '2:00 PM' },
@@ -16,10 +16,10 @@ db.once('open', async () => {
     console.log('appointments seeded');
 
     // clean database
-    await Pet.deleteMany({});
+    await petSchema.deleteMany({});
 
     // bulk create each model
-    const pets = await Pet.insertMany([
+    const pets = await petSchema.insertMany([
         {
             name: "Barnie",
             species: "Cat",

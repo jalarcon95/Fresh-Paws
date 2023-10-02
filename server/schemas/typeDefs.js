@@ -36,7 +36,7 @@ type Query {
 input InputPet {
     name: String!
     species: String!
-    vaccine: Boolean
+    vaccine: String
     description: String
 }
 
