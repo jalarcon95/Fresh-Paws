@@ -70,13 +70,7 @@ export const REMOVE_PET = gql`
 export const ADD_APPOINTMENT = gql`
   mutation addAppointment($newAppointment: InputAppointment!) {
     addAppointment(newAppointment: $newAppointment) {
-      petId
-      name
-      appointments {
-        appointmentId
-        date
-        time
-      }
+      _id
     }
   }
 `;
@@ -84,13 +78,7 @@ export const ADD_APPOINTMENT = gql`
 export const REMOVE_APPOINTMENT = gql`
   mutation removeAppointment($appointmentId: ID!) {
     removeAppointment(appointmentId: $appointmentId) {
-      petId
-      name
-      appointments {
-        appointmentId
-        date
-        time
-      }
+      _id
     }
   }
 `;

@@ -13,6 +13,9 @@ const appointmentSchema = new Schema(
             required: true,
         },
         pet: Pet,
+        service: {
+            type: String
+        }
     }
 );
 

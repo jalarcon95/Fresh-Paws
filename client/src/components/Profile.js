@@ -8,7 +8,7 @@ import petProfile from '../assets/PetProfile.png';
 import appointment from '../assets/apt.png';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
-
+import dayjs from 'dayjs';
 import { useState } from 'react';
 import Auth from '../utils/auth';
 import { GET_ME } from '../utils/queries';
@@ -30,7 +30,7 @@ export default function Profile() {
     const [removeAppointment, { err }] = useMutation(REMOVE_APPOINTMENT);
 
     const user = data?.me || {};
-
+    console.log(user);
     //function to delete an appointment
     const handleAppointmentDelete = async (_id) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -127,37 +127,25 @@ export default function Profile() {
                                                     {pet.appointments.map(appt => (
                                                         <>
                                                             <li>
-                                                                <p>Date: {appt.date}</p>
+                                                                <p>Date: {dayjs(appt.date).format("MM/DD/YY")}</p>
                                                             </li>
                                                             <li>
                                                                 <p>Time: {appt.time}</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>Service: {appt.service}</p>
                                                             </li>
                                                             <br />
                                                         </>
                                                     ))}
                                                 </ul>
                                             </>
-                                            //     pet.map(appt => (
-                                            //     <div key={appt._id}>
-                                            //         <p>Date: {appt.date}</p>
-                                            //         <p>Time: {appt.time}</p>
-                                            //     </div>
-                                            // ))
                                         ))
-
-
-
-                                        //      user.pets[0].appointments.map(appt => (
-                                        //         <div key={appt._id}>
-                                        //             <p>Date: {appt.date}</p>
-                                        //             <p>Time: {appt.time}</p>
-                                        //         </div>
-                                        //     ))
                                     )}
                                 </Typography>
-                                <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
+                                {/* <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button> */}
                             </Typography>
-                            <button className='hoverButton' >Update</button>
+                            {/* <button className='hoverButton' >Update</button> */}
                         </CardContent>
                     </CardActionArea>
                 </Card>

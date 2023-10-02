@@ -18,6 +18,7 @@ import Contact from './components/Contact';
 import Profile from './components/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ReserveForm from './components/ReserveForm'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -75,6 +76,10 @@ function App() {
               <Route 
                 path="/profile" 
                 element={<Profile />}
+              />
+              <Route 
+                path="/reserve" 
+                element={<ReserveForm />}
               />
             </Routes>
           </div>

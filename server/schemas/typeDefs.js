@@ -21,6 +21,7 @@ type Appointment {
     _id: ID!
     date: String!
     time: String!
+    service: String!
 }
 
 type Auth {
@@ -43,6 +44,7 @@ input InputAppointment {
     petId: ID!
     date: String!
     time: String!
+    service: String!
 }
 
 type Mutation {
@@ -50,8 +52,8 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addPet(newPet: InputPet!): User
     removePet(petId: ID!): User
-    addAppointment(newAppointment: InputAppointment!): Pet
-    removeAppointment(appointmentId: ID!): Pet
+    addAppointment(newAppointment: InputAppointment!): User
+    removeAppointment(appointmentId: ID!): User
 }
 `;
 

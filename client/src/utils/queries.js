@@ -15,6 +15,7 @@ query me {
           _id
           date
           time
+          service
         }
       }
     }

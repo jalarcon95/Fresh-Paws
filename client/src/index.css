@@ -36,3 +36,7 @@ code {
   background-color: #37745B; /* Green */
   color: white;
 }
+
+#petDropdown {
+  margin-bottom: 15px;
+}

@@ -19,7 +19,7 @@ function Copyright() {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
+
 const defaultTheme = createTheme();
 
 export default function StickyFooter() {
@@ -29,7 +29,7 @@ export default function StickyFooter() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '10vh',
+          minHeight: '41vh'
         }}
       >
         <CssBaseline />
@@ -41,7 +41,6 @@ export default function StickyFooter() {
             px: 2,
             mt: 'auto',
             backgroundColor: '#3D5C60'
-
           }}
         >
           <Typography variant="body1" align="center" sx={{color: "#ffffff"}}>
