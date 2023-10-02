@@ -43,8 +43,8 @@ export const ADD_PET = gql`
 `;
 
 export const REMOVE_PET = gql`
-  mutation removePet($petId: _id) {
-    removePet(_id: $petId) {
+  mutation removePet($petId: ID!) {
+    removePet(petId: $petId) {
       _id
       username
       email
