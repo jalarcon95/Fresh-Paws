@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Box, Button, CardActionArea } from '@mui/material';
+import { Box, CardActionArea } from '@mui/material';
 import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 import Bath from '../assets/bath-photo.jpeg';
 import Haircut from '../assets/haircut.webp';
@@ -40,13 +40,11 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Bath, nail trim, ear cleaning, paw & pad trim, sanitary trim, and more.
                         </Typography>
-                            <Link to={`/profile`}><button className='hoverButton' >Reserve</button></Link>
-                            
-                        {/* {Auth.loggedIn() ? (<Button>Reserve</Button>) : ("")} */}
+                        {Auth.loggedIn() ? (<Link to={`/reserve`} state={{service: "Bath and Brush"}} style={{ textDecoration: "none" }}><button className='hoverButton' >Reserve</button></Link>) : ("")}
                     </CardContent>
                 </CardActionArea>
             </Card>
-           
+
             <Card sx={{ maxWidth: 345, width: "80%", m: 5 }}>
                 <CardActionArea>
                     <CardMedia
@@ -65,6 +63,7 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Bath, haircut, brushing, light dematting, nail trim, paw & pad trim, ear cleaning, sanitary trim & more.
                         </Typography>
+                        {Auth.loggedIn() ? (<Link to={`/reserve`} state={{service: "Bath and Haircut"}} style={{ textDecoration: "none" }}><button className='hoverButton' >Reserve</button></Link>) : ("")}
                     </CardContent>
                 </CardActionArea>
             </Card>
@@ -86,6 +85,7 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Improve your furry friend's breath and dental health!
                         </Typography>
+                        {Auth.loggedIn() ? (<Link to={`/reserve`} state={{service: "Teeth Brushing"}} style={{ textDecoration: "none" }}><button className='hoverButton' >Reserve</button></Link>) : ("")}
                     </CardContent>
                 </CardActionArea>
             </Card>
@@ -107,6 +107,7 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             A clean trim and paw balm.
                         </Typography>
+                        {Auth.loggedIn() ? (<Link to={`/reserve`} state={{service: "Nail Trim"}} style={{ textDecoration: "none" }}><button className='hoverButton' >Reserve</button></Link>) : ("")}
                     </CardContent>
                 </CardActionArea>
             </Card>
@@ -128,6 +129,7 @@ export default function Services() {
                         <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
                             Get some help removing your pet's extra fur!
                         </Typography>
+                        {Auth.loggedIn() ? (<Link to={`/reserve`} state={{service: "Shedding"}} style={{ textDecoration: "none" }}><button className='hoverButton' >Reserve</button></Link>) : ("")}
                     </CardContent>
                 </CardActionArea>
             </Card>
@@ -147,8 +149,9 @@ export default function Services() {
                             <PaidOutlinedIcon /> <Typography> 60</Typography>
                         </Box>
                         <Typography variant="body2" color="text.secondary" sx={{ py: 1 }}>
-                            Get rid of your pet's pests, so they can get back to the important stuff. 
+                            Get rid of your pet's pests, so they can get back to the important stuff.
                         </Typography>
+                        {Auth.loggedIn() ? (<Link to={`/reserve`} state={{service: "Flea Removal"}} style={{ textDecoration: "none" }}><button className='hoverButton' >Reserve</button></Link>) : ("")}
                     </CardContent>
                 </CardActionArea>
             </Card>

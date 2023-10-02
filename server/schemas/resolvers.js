@@ -61,7 +61,7 @@ const resolvers = {
         addAppointment: async (parents, { newAppointment }, context) => {
             if (context.user) {
                 const updatedPet = await User.findOneAndUpdate({_id: context.user._id, "pets._id": newAppointment.petId}, {
-                    $push: {"pets.$[].appointments": {date: newAppointment.date, time: newAppointment.time}}
+                    $push: {"pets.$.appointments": {date: newAppointment.date, time: newAppointment.time, service: newAppointment.service}}
                 }, {
                     upsert: true,
                     new: true,
