@@ -149,7 +149,7 @@ export default function Profile() {
                                         </Typography>
                                         <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
                                     </Typography>
-                                    <button className='hoverButton' >Update</button>
+                                    {/* <button className='hoverButton' >Update</button> */}
                                 </CardContent>
                             </CardActionArea>
                         </Card>
