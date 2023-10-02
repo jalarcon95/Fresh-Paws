@@ -71,7 +71,7 @@ export default function Profile() {
         }
     };
 
-    //function on form to add a pet GETTING A 400 ERROR HERE
+    //function on form to add a pet
     const handleSubmit = async (event) => {
         event.preventDefault();
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -79,12 +79,13 @@ export default function Profile() {
         if (!token) {
             return false;
         }
-
+        console.log(userFormData);
         try {
             const response = await addPet({
-                variables: { ...userFormData },
+                variables: { newPet: { ...userFormData } },
             });
             console.log('Added pet', response);
+            window.location.reload();
         } catch (er) {
             console.log(er)
         };
