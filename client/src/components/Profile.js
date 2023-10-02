@@ -34,8 +34,9 @@ export default function Profile() {
     const [removeAppointment, { err }] = useMutation(REMOVE_APPOINTMENT);
 
     const user = data?.me || {};
-    console.log(user);
-    //function to delete an appointment
+    // console.log(user);
+
+    //function to delete an appointment GETTING A 400 ERROR HERE
     const handleAppointmentDelete = async (_id) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -108,8 +109,8 @@ export default function Profile() {
                 </Typography>
 
                 {/* Maps over each pet and each of its appointments to create a card for each appointment */}
-                {user.pets.appointments && (
-                    user.pets.appointments.map(appointments => (
+                {user.pets && (
+                    user.pets.map(pet => (
                         <Card sx={{
                             maxWidth: 345,
                             width: "80%",
@@ -124,32 +125,35 @@ export default function Profile() {
                                 />
                                 <CardContent sx={{}}>
                                     <Typography gutterBottom variant="h5" component="div">
-                                        Pet Appointment
+
                                         <Typography>
                                             <>
-                                                <h2>Pet Name: {user.pet.name}</h2>
+                                                <h2>Pet Name: {pet.name}</h2>
                                                 <ul>
-                                                    <>
-                                                        <li>
-                                                            <p>Date: {dayjs(appointments.date).format("MM/DD/YY")}</p>
-                                                        </li>
-                                                        <li>
-                                                            <p>Time: {appointments.time}</p>
-                                                        </li>
-                                                        <li>
-                                                            <p>Service: {appointments.service}</p>
-                                                        </li>
-                                                        <br />
-                                                    </>
+
+                                                    {pet.appointments && (
+                                                        pet.appointments.map(appointments => (
+                                                            <>
+                                                                <li>
+                                                                    <p>Date: {dayjs(appointments.date).format("MM/DD/YY")}</p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>Time: {appointments.time}</p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>Service: {appointments.service}</p>
+                                                                </li>
+                                                                <br />
+                                                                <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
+                                                                <button className='hoverButton' >Update</button>
+                                                            </>
+                                                        ))
+                                                    )}
 
                                                 </ul>
                                             </>
-
-
                                         </Typography>
-                                        <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
                                     </Typography>
-                                    {/* <button className='hoverButton' >Update</button> */}
                                 </CardContent>
                             </CardActionArea>
                         </Card>

@@ -32,6 +32,7 @@ export const ADD_PET = gql`
       username
       email
       pets {
+        _id
         name
         species
         vaccine
