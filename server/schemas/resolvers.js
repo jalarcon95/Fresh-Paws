@@ -49,7 +49,6 @@ const resolvers = {
         },
         removePet: async (parents, { petId }, context) => {
             if (context.user) {
-                console.log(petId);
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $pull: { pets: { _id: petId } } },

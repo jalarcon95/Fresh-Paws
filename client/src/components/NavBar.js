@@ -1,5 +1,5 @@
 // import an app bar from MUI
-
+import { Link } from 'react-router-dom';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -34,6 +34,7 @@ function ResponsiveAppBar() {
 
     const logout = (event) => {
         Auth.logout()
+        window.location.href = '/'
     }
 
     return (
@@ -76,21 +77,24 @@ function ResponsiveAppBar() {
                                 <Link to={`/services`}><Typography textAlign="center">Services</Typography></Link>
                                 <Link to={`/contact`}><Typography textAlign="center">Contact</Typography></Link> */}
                                 <Button
-                                    href='/'
+                                    as={Link}
+                                    to='/'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                 >
                                     ABOUT
                                 </Button>
                                 <Button
-                                    href='/services'
+                                    as={Link}
+                                    to='/services'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                 >
                                     SERVICES
                                 </Button>
                                 <Button
-                                    href='/contact'
+                                    as={Link}
+                                    to='/contact'
                                     onClick={handleCloseNavMenu}
                                     sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                 >
@@ -102,21 +106,24 @@ function ResponsiveAppBar() {
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <Button
-                            href='/'
+                            as={Link}
+                            to='/'
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
                             ABOUT
                         </Button>
                         <Button
-                            href='/services'
+                            as={Link}
+                            to='/services'
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
                             SERVICES
                         </Button>
                         <Button
-                            href='/contact'
+                            as={Link}
+                            to='/contact'
                             onClick={handleCloseNavMenu}
                             sx={{ my: 2, color: 'white', display: 'block' }}
                         >
@@ -152,13 +159,16 @@ function ResponsiveAppBar() {
                                 {Auth.loggedIn() ? (
                                     <>
                                         <Button
-                                            href='/profile'
+                                            as={Link}
+                                            to='/profile'
                                             onClick={handleCloseNavMenu}
                                             sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                         >
                                             PROFILE
                                         </Button>
                                         <Button
+                                            as={Link}
+                                            to='/'
                                             onClick={logout}
                                             sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                         >
@@ -168,14 +178,16 @@ function ResponsiveAppBar() {
                                 ) : (
                                     <>
                                         <Button
-                                            href='/login'
+                                            as={Link}
+                                            to='/login'
                                             onClick={handleCloseNavMenu}
                                             sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                         >
                                             LOGIN
                                         </Button>
                                         <Button
-                                            href='/signup'
+                                            as={Link}
+                                            to='/signup'
                                             onClick={handleCloseNavMenu}
                                             sx={{ my: 2, color: '#3D5C60', display: 'block' }}
                                         >
