@@ -45,7 +45,7 @@ export default function Profile() {
         }
         console.log(appointmentId);
         try {
-            const response = await removeAppointment({ variables: appointmentId });
+            const response = await removeAppointment({ variables: {appointmentId} });
             console.log('Deleted Appointment', response);
         } catch (err) {
             console.log(err);
@@ -146,8 +146,8 @@ export default function Profile() {
                                                                     <p>Service: {appointments.service}</p>
                                                                 </li>
                                                                 <br />
-                                                                <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
-                                                                <button className='hoverButton' >Update</button>
+                                                                {/* <button className='hoverButton' onClick={() => handleAppointmentDelete(appointment._id)} >Cancel</button> */}
+                                                                {/* <button className='hoverButton' >Update</button> */}
                                                             </>
                                                         ))
                                                     )}

@@ -52,7 +52,7 @@ const resolvers = {
                 console.log(petId);
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { pets: { petId } } },
+                    { $pull: { pets: { _id: petId } } },
                     { new: true }
                 );
                 return updatedUser;
@@ -61,8 +61,8 @@ const resolvers = {
         },
         addAppointment: async (parents, { newAppointment }, context) => {
             if (context.user) {
-                const updatedPet = await User.findOneAndUpdate({_id: context.user._id, "pets._id": newAppointment.petId}, {
-                    $push: {"pets.$.appointments": {date: newAppointment.date, time: newAppointment.time, service: newAppointment.service}}
+                const updatedPet = await User.findOneAndUpdate({ _id: context.user._id, "pets._id": newAppointment.petId }, {
+                    $push: { "pets.$.appointments": { date: newAppointment.date, time: newAppointment.time, service: newAppointment.service } }
                 }, {
                     upsert: true,
                     new: true,
@@ -74,9 +74,9 @@ const resolvers = {
         },
         removeAppointment: async (parents, { appointmentId }, context) => {
             if (context.user) {
-                const updatedPet = await Pet.findByIdAndUpdate(
-                    { _id: context.pet._id },
-                    { $pull: { appointment: { appointmentId } } },
+                const updatedPet = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { "pets.$.appointments": { _id: appointmentId } } },
                     { new: true }
                 );
                 return updatedPet;

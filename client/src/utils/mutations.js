@@ -49,7 +49,7 @@ export const REMOVE_PET = gql`
       username
       email
       pets {
-        petId
+        _id
         name
         species
         vaccine
