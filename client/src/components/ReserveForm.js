@@ -49,7 +49,7 @@ function AppointmentForm() {
                 },
             });
             console.log(data);
-            window.location.assign("/profile");
+            window.location.href = '/profile';
         } catch (error) {
             console.log(error);
         }
@@ -57,7 +57,7 @@ function AppointmentForm() {
 
     if (error) return <h2>{error.message}</h2>;
     return (
-        <Box sx={{display: "flex", justifyContent: "center", textAlign: "left"}}>
+        <Box sx={{ display: "flex", justifyContent: "center", textAlign: "left" }}>
             <form>
                 <label htmlFor="petDropdown">Select a Pet: </label>
                 <select id="petDropdown" value={pets} onChange={(event) => setPetId(event.target.value)}>

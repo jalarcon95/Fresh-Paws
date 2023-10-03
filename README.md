@@ -50,7 +50,7 @@ The application is covered under the following license:
 
 ## Links 
 
-[Deployed Site](https://freshpawsgrooming-9c1c93deb5e9.herokuapp.com/)
+[Deployed Site](https://freshpawsgrooming-9cc1cda645c0.herokuapp.com/)
 
 [Github Repo](https://github.com/jalarcon95/Fresh-Paws)
 
