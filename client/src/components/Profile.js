@@ -65,7 +65,7 @@ export default function Profile() {
         try {
             const response = await removePet({ variables: {petId} });
             console.log('Deleted Pet: ', response);
-            window.location.reload();
+            window.location.href = '/profile';
             if (e) {
                 console.log(e);
             }
@@ -88,7 +88,7 @@ export default function Profile() {
                 variables: { newPet: { ...userFormData } },
             });
             console.log('Added pet', response);
-            window.location.reload();
+            window.location.href= '/profile';
         } catch (er) {
             console.log(er)
         };
