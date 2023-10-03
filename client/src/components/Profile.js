@@ -38,15 +38,15 @@ export default function Profile() {
     // console.log(user);
 
     //function to delete an appointment GETTING A 400 ERROR HERE
-    const handleAppointmentDelete = async (_id) => {
+    const handleAppointmentDelete = async (appointmentId) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
             return false;
         }
-
+        console.log(appointmentId);
         try {
-            const response = await removeAppointment({ variables: _id });
+            const response = await removeAppointment({ variables: {appointmentId} });
             console.log('Deleted Appointment', response);
         } catch (err) {
             console.log(err);
@@ -54,7 +54,8 @@ export default function Profile() {
     };
 
     //function to delete a pet GETTING A 400 ERROR HERE
-    const handlePetDelete = async (_id) => {
+    const handlePetDelete = async (petId) => {
+
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
         if (!token) {
@@ -62,7 +63,7 @@ export default function Profile() {
         }
 
         try {
-            const response = await removePet({ variables: _id });
+            const response = await removePet({ variables: {petId} });
             console.log('Deleted Pet: ', response);
             if (e) {
                 console.log(e);
@@ -146,8 +147,8 @@ export default function Profile() {
                                                                     <p>Service: {appointments.service}</p>
                                                                 </li>
                                                                 <br />
-                                                                <button className='hoverButton' onClick={handleAppointmentDelete} >Cancel</button>
-                                                                <button className='hoverButton' >Update</button>
+                                                                {/* <button className='hoverButton' onClick={() => handleAppointmentDelete(appointment._id)} >Cancel</button> */}
+                                                                {/* <button className='hoverButton' >Update</button> */}
                                                             </>
                                                         ))
                                                     )}
@@ -192,7 +193,7 @@ export default function Profile() {
                                 <Typography variant="body2" color="text.secondary">
                                     {pet.description}
                                 </Typography>
-                                <button className='hoverButton' onClick={handlePetDelete} >Remove</button>
+                                <button className='hoverButton' onClick={() => handlePetDelete(pet._id)} >Remove</button>
                             </CardContent>
                         </CardActionArea>
                     </Card>
