@@ -206,10 +206,10 @@ export default function Profile() {
                 </Typography>
             </div>
             
-            <div style={{ flexBasis: "80%", marginBottom: "1rem", display: "flex", flexWrap: "nowrap", overflowX: "auto", justifyContent: "center" }}>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3, alignContent: "center", marginBottom: "1rem", marginLeft: "9%" }}>
+                <div style={{ marginBottom: "1rem" }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} >
                             <TextField
                                 required
                                 fullWidth
@@ -258,13 +258,12 @@ export default function Profile() {
                             />
                         </Grid>
                     </Grid>
+                    </div>
                     <Typography>
-
-                           
                         <button className='hoverButton' type="submit">Add Pet</button>
                     </Typography>
+                    
                 </Box>
-            </div>
         </Box>
     );
 }
