@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import dayjs from 'dayjs';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import { useState } from 'react';
 import Auth from '../utils/auth';
@@ -103,12 +104,12 @@ export default function Profile() {
     }
 
     return (
-        <Box sx={{ display: "flex", m: 5, flexWrap: "wrap", justifyContent: "center" }}>
-            <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
+        <Box sx={{ display: "flex", m: 5, flexWrap: "wrap"}}>
+            
                 <Typography gutterBottom variant="h4" color="#37745B" >
                     Your Upcoming Appointment:
                 </Typography>
-
+                <div style={{ flexBasis: "80%", marginBottom: "1rem", display: "flex", flexWrap: "nowrap", overflowX: "auto", justifyContent: "center" }}>
                 {/* Maps over each pet and each of its appointments to create a card for each appointment */}
                 {user.pets && (
                     user.pets.map(pet => (
@@ -162,12 +163,13 @@ export default function Profile() {
                 )}
             </div>
 
-            <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
+            
                 <Typography gutterBottom variant="h4" color="#37745B" >
                     Your Registered Pets:
                 </Typography>
-            </div>
+           
 
+            <div style={{ flexBasis: "80%", marginBottom: "1rem", display: "flex", flexWrap: "nowrap", overflowX: "auto", justifyContent: "center" }}>
             {/* This displays each pet at the bottom in a card with a remove button, maybe an edit button? */}
             {user.pets && (
                 user.pets.map(pet => (
@@ -196,14 +198,18 @@ export default function Profile() {
                     </Card>
                 ))
             )}
+            </div>
 
             <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
                 <Typography gutterBottom variant="h4" color="#37745B" >
                     Add a Pet:
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            </div>
+            
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3, alignContent: "center", marginBottom: "1rem", marginLeft: "9%" }}>
+                <div style={{ marginBottom: "1rem" }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} >
                             <TextField
                                 required
                                 fullWidth
@@ -252,11 +258,12 @@ export default function Profile() {
                             />
                         </Grid>
                     </Grid>
+                    </div>
                     <Typography>
                         <button className='hoverButton' type="submit">Add Pet</button>
                     </Typography>
+                    
                 </Box>
-            </div>
         </Box>
     );
 }
