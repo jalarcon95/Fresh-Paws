@@ -110,13 +110,15 @@ export default function Profile() {
                 <Typography gutterBottom variant="h4" color="#37745B" >
                     Your Upcoming Appointment:
                 </Typography>
-                <div style={{ flexBasis: "80%", marginBottom: "1rem", display: "flex", flexWrap: "nowrap", overflowX: "auto", justifyContent: "center" }}>
+                <div style={{ flexBasis: "90%", marginBottom: "1rem", display: "flex", flexWrap: "wrap", overflowX: "auto", justifyContent: "center" }}>
                 {/* Maps over each pet and each of its appointments to create a card for each appointment */}
                 {user.pets && (
                     user.pets.map(pet => (
                         <Card sx={{
-                            maxWidth: 345,
-                            width: "80%",
+                            minWidth: 275,
+                            maxWidth: 275,
+                            width: "20%",
+                            margin: "0.01rem",
                             m: 5
                         }}>
                             <CardActionArea>
@@ -170,13 +172,15 @@ export default function Profile() {
                 </Typography>
            
 
-            <div style={{ flexBasis: "80%", marginBottom: "1rem", display: "flex", flexWrap: "nowrap", overflowX: "auto", justifyContent: "center" }}>
+            <div style={{ flexBasis: "90%", marginBottom: "1rem", display: "flex", flexWrap: "wrap", overflowX: "auto", justifyContent: "center" }}>
             {/* This displays each pet at the bottom in a card with a remove button, maybe an edit button? */}
             {user.pets && (
                 user.pets.map(pet => (
                     <Card sx={{
-                        maxWidth: 345,
-                        width: "80%",
+                        minWidth: 275,
+                        maxWidth: 275,
+                        width: "20%",
+                        margin: "0.01rem",
                         m: 5
                     }}>
                         <CardActionArea>
