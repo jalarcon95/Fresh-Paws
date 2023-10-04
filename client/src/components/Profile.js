@@ -12,6 +12,7 @@ import dayjs from 'dayjs';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 import Auth from '../utils/auth';
@@ -46,7 +47,7 @@ export default function Profile() {
         }
         console.log(appointmentId);
         try {
-            const response = await removeAppointment({ variables: {appointmentId} });
+            const response = await removeAppointment({ variables: { appointmentId } });
             console.log('Deleted Appointment', response);
         } catch (err) {
             console.log(err);
@@ -63,9 +64,9 @@ export default function Profile() {
         }
 
         try {
-            const response = await removePet({ variables: {petId} });
+            const response = await removePet({ variables: { petId } });
             console.log('Deleted Pet: ', response);
-            window.location.reload();
+
             if (e) {
                 console.log(e);
             }
@@ -88,7 +89,7 @@ export default function Profile() {
                 variables: { newPet: { ...userFormData } },
             });
             console.log('Added pet', response);
-            window.location.reload();
+
         } catch (er) {
             console.log(er)
         };
@@ -106,12 +107,12 @@ export default function Profile() {
     }
 
     return (
-        <Box sx={{ display: "flex", m: 5, flexWrap: "wrap"}}>
-            
-                <Typography gutterBottom variant="h4" color="#37745B" >
-                    Your Upcoming Appointment:
-                </Typography>
-                <div style={{ flexBasis: "90%", marginBottom: "1rem", display: "flex", flexWrap: "wrap", overflowX: "auto", justifyContent: "center" }}>
+        <Box sx={{ display: "flex", m: 5, flexWrap: "wrap" }}>
+
+            <Typography gutterBottom variant="h4" color="#37745B" >
+                Your Upcoming Appointment:
+            </Typography>
+            <div style={{ flexBasis: "90%", marginBottom: "1rem", display: "flex", flexWrap: "wrap", overflowX: "auto", justifyContent: "center" }}>
                 {/* Maps over each pet and each of its appointments to create a card for each appointment */}
                 {user.pets && (
                     user.pets.map(pet => (
@@ -167,43 +168,48 @@ export default function Profile() {
                 )}
             </div>
 
-            
-                <Typography gutterBottom variant="h4" color="#37745B" >
-                    Your Registered Pets:
-                </Typography>
-           
+
+            <Typography gutterBottom variant="h4" color="#37745B" >
+                Your Registered Pets:
+            </Typography>
+
 
             <div style={{ flexBasis: "90%", marginBottom: "1rem", display: "flex", flexWrap: "wrap", overflowX: "auto", justifyContent: "center" }}>
-            {/* This displays each pet at the bottom in a card with a remove button, maybe an edit button? */}
-            {user.pets && (
-                user.pets.map(pet => (
-                    <Card sx={{
-                        minWidth: 275,
-                        maxWidth: 275,
-                        width: "20%",
-                        margin: "0.01rem",
-                        m: 5
-                    }}>
-                        <CardActionArea>
-                            <CardMedia
-                                component="img"
-                                height="250"
-                                image={petProfile}
-                                alt="Profile image"
-                            />
-                            <CardContent sx={{}}>
-                                <Typography gutterBottom variant="h5" component="div">
-                                    {pet.name}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {pet.description}
-                                </Typography>
-                                <button className='hoverButton' onClick={() => handlePetDelete(pet._id)} >Remove</button>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                ))
-            )}
+                {/* This displays each pet at the bottom in a card with a remove button, maybe an edit button? */}
+                {user.pets && (
+                    user.pets.map(pet => (
+                        <Card sx={{
+                            minWidth: 275,
+                            maxWidth: 275,
+                            width: "20%",
+                            margin: "0.01rem",
+                            m: 5
+                        }}>
+                            <CardActionArea>
+                                <CardMedia
+                                    component="img"
+                                    height="250"
+                                    image={petProfile}
+                                    alt="Profile image"
+                                />
+                                <CardContent sx={{}}>
+                                    <Typography gutterBottom variant="h5" component="div">
+                                        {pet.name}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {pet.description}
+                                    </Typography>
+                                    <button as={Link}
+                                        to='/profile'
+                                        className='hoverButton'
+                                        onClick={() => handlePetDelete(pet._id)}>
+                                        Remove
+                                    </button>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    ))
+                )}
             </div>
 
             <div style={{ flexBasis: "80%", marginBottom: "1rem" }}>
@@ -211,8 +217,8 @@ export default function Profile() {
                     Add a Pet:
                 </Typography>
             </div>
-            
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3, alignContent: "center", marginBottom: "1rem", marginLeft: "9%" }}>
+
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3, alignContent: "center", marginBottom: "1rem", marginLeft: "9%" }}>
                 <div style={{ marginBottom: "1rem" }}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} >
@@ -264,12 +270,17 @@ export default function Profile() {
                             />
                         </Grid>
                     </Grid>
-                    </div>
-                    <Typography>
-                        <button className='hoverButton' type="submit">Add Pet</button>
-                    </Typography>
-                    
-                </Box>
+                </div>
+                <Typography>
+                    <button as={Link}
+                        to='/profile'
+                        className='hoverButton'
+                        type="submit">
+                        Add Pet
+                    </button>
+                </Typography>
+
+            </Box>
         </Box>
     );
 }

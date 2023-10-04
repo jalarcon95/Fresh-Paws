@@ -13,6 +13,7 @@ import { GET_ME } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import { useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 function AppointmentForm() {
     const [addAppointment, { error }] = useMutation(ADD_APPOINTMENT);
@@ -49,7 +50,7 @@ function AppointmentForm() {
                 },
             });
             console.log(data);
-            window.location.assign("/profile");
+
         } catch (error) {
             console.log(error);
         }
@@ -57,7 +58,7 @@ function AppointmentForm() {
 
     if (error) return <h2>{error.message}</h2>;
     return (
-        <Box sx={{display: "flex", justifyContent: "center", textAlign: "left"}}>
+        <Box sx={{ display: "flex", justifyContent: "center", textAlign: "left" }}>
             <form>
                 <label htmlFor="petDropdown">Select a Pet: </label>
                 <select id="petDropdown" value={pets} onChange={(event) => setPetId(event.target.value)}>
@@ -126,7 +127,12 @@ function AppointmentForm() {
 
                 <br />
 
-                <button sx={{ mt: 3 }} type="submit" onClick={handleSubmit} className='hoverButton'>
+                <button as={Link}
+                    to='/profile'
+                    sx={{ mt: 3 }}
+                    type="submit"
+                    onClick={handleSubmit}
+                    className='hoverButton'>
                     Request Appointment
                 </button>
             </form>
